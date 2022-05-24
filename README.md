@@ -1,6 +1,6 @@
 # Inspire-tiral-MSc-paper
 
-Codebook for descriptive analysis and building prognostic models for Preeclampsia using placental biomarkers as continous values Vs bianry cuttoff values.
+Codebook for descriptive analysis and building prognostic models for Preeclampsia using placental biomarkers as continous values Vs binary cuttoff values.
 
 ## License
 
