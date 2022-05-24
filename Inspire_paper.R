@@ -6,12 +6,14 @@
 # biomarkers for predicting preeclampsia: A secondary analysis of data from the INSPIRE trial data   
 
 # libraries
-pacman::p_load(rio, readxl, tidyverse,rms,reshape2, mfp, plyr,Hmisc,MASS,pROC,DescTools,ggrepel,gridExtra,boot)
+pacman::p_load(readxl, tidyverse,rms,reshape2, mfp, plyr,Hmisc,MASS,pROC,DescTools,ggrepel,gridExtra,boot)
 
 # Load dataset
 
-Inspire <- read_excel("C:/Users/mbk/Downloads/Inspire.xls")
+
+Inspire <- read_excel("Inspire.xls")
 View(Inspire)
+
 attach(Inspire)
 
 # Question-1. When adjusted for the trial arm, what are the calibration and  discrimination 
