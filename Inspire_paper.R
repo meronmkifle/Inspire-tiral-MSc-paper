@@ -715,41 +715,30 @@ plot(probb~logsflt1vi, xlab="sflt-1 (pg/mL)", ylab = "Predicted probabilities of
 
 
 
+#############  Delong test for statistical differnce of models AUC curves #########
 
+###SFLT Vs PLGF ###
+par(mfrow=c(2,2))
 
+SFLT_PLGF  <- roc.test(roc_sflt, roc_plgf,  method = "delong", na.rm = TRUE)
+SFLT_PLGF
 
+###SFLT Vs RATIO ###
+SFLT_RATIO <- roc.test(roc_sflt,roc_sflt_plgf_ratio,  method = "delong", na.rm = TRUE)
+SFLT_RATIO
 
+###SFLT Vs SFLT CUTTOFF ###
+SFLT_CUTTOFF <- roc.test(roc_sflt, roc_sflt_plgf_cuttoff,  method = "delong", na.rm = TRUE)
+SFLT_CUTTOFF
 
+###PLGF Vs RATIO ###
+PLGF_RATIO <- roc.test(roc_plgf,   roc_sflt_plgf_ratio,  method = "delong", na.rm = TRUE)
+PLGF_RATIO
 
-#########################  Delong test for statistical differnce of models AUC curves
+###PLGF Vs CUTTOFF###
+PLGF_CUTTOFF <- roc.test( roc_plgf, roc_sflt_plgf_cuttoff,  method = "delong", na.rm = TRUE)
+PLGF_CUTTOFF
 
-
-df <- data.frame(disease_status = rbinom(n=100, size=1, prob=0.20),
-                 test1 = rnorm(100, mean=15, sd=4),
-                 test2 = rnorm(100, mean=30, sd=2),
-                 test3 = rnorm(100, mean=50, sd=3))
-
-#create roc object for test1, test2, test3
-roc.out_test1<-roc(df$disease_status, df$test1, plot=TRUE, smooth = FALSE)
-#> Setting levels: control = 0, case = 1
-#> Setting direction: controls < cases
-
-roc.out_test2<-roc(df$disease_status, df$test2, plot=TRUE, smooth = FALSE)
-#> Setting levels: control = 0, case = 1
-#> Setting direction: controls < cases
-
-roc.out_test3<-roc(df$disease_status, df$test3, plot=TRUE, smooth = FALSE)
-#> Setting levels: control = 0, case = 1
-#> Setting direction: controls < cases
-
-# compare the AUC of test1 and test 2
-roc.test(roc.out_test1, roc.out_test2,  method = "delong", na.rm = TRUE)
-#> 
-#>  DeLong's test for two correlated ROC curves
-#> 
-#> data:  roc.out_test1 and roc.out_test2
-#> Z = 0.60071, p-value = 0.548
-#> alternative hypothesis: true difference in AUC is not equal to 0
-#> sample estimates:
-#> AUC of roc1 AUC of roc2 
-#>   0.5840108   0.5216802
+###RATIO Vs CUTTOFF ###
+RATIO_CUTTOFF <- roc.test(roc_sflt_plgf_ratio,  roc_sflt_plgf_cuttoff,  method = "delong", na.rm = TRUE)
+RATIO_CUTTOFF
