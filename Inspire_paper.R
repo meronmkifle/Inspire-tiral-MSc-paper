@@ -3,6 +3,8 @@
 # biomarkers for predicting preeclampsia: A secondary analysis of data from the INSPIRE trial data   
 
 # Libraries
+# install.libraries('pacman')
+library(pacman)
 pacman::p_load(readxl, tidyverse, rms, reshape2, mfp, plyr, Hmisc, MASS, pROC, DescTools, ggrepel, gridExtra, boot, janitor)
 
 # Load dataset
